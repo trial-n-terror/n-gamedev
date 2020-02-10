@@ -1,0 +1,31 @@
+---
+layout: default
+---
+{% assign post = page %}
+
+{% assign previousPage = "#" %}
+{% if post.previous.url %}
+	{% assign previousPage = post.previous.url %}
+{% endif %
+{% assign nextPage = "#" %}
+{% if post.next.url %}
+	{% assign nextPage = post.next.url %}
+{% endif %}
+<nav class="PageNavigation">
+    <a href="{{ site.baseurl }}{{ site.posts.last.url }}">first</a>
+	<a class="prev" href="{{previousPage}}" title="{{post.previous.title}}">&laquo; Previous</a>
+	<a class="next" href="{{nextPage}}" title="{{post.next.title}}">Next &raquo;</a>
+    <a href="{{ site.baseurl }}{{ site.posts.first.url }}">last</a>
+</nav>
+
+<article class="post">
+  <h1>{{ page.title }}</h1>
+
+  <div class="entry">
+    {{ content }}
+  </div>
+
+  <div class="date">
+    Written on {{ page.date | date: "%B %e, %Y" }}
+  </div>
+</article>
